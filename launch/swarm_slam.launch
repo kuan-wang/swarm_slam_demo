@@ -1,6 +1,6 @@
 
 <launch>
-  <node name="multiMono_demo" pkg="ORB_SLAM2" type="multiMono_demo" output="screen" args="/home/wangkuan/workspace/ORB_SLAM2/ORB_SLAM2/Vocabulary/ORBvoc.bin   /home/wangkuan/workspace/SwarmSlam/Examples/Monocular/TUM1.yaml" >
+  <node name="swarm_slam_node" pkg="swarm_slam_demo" type="swarm_slam_node" output="screen" args="/home/wangkuan/workspace/ORB_SLAM2/ORB_SLAM2/Vocabulary/ORBvoc.bin   /home/wangkuan/workspace/SwarmSlam/Examples/Monocular/TUM1.yaml false" >
     <remap from="/camera/image_raw" to="/firefly1/vi_sensor/right/image_raw" />
     <remap from="/camera0/image_raw" to="/firefly2/vi_sensor/right/image_raw" />
     <remap from="/camera1/image_raw" to="/firefly3/vi_sensor/right/image_raw" />

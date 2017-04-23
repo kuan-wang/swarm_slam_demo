@@ -54,13 +54,13 @@ class ImageGrabber
 public:
     ImageGrabber(ORB_SLAM2::System* pSLAM):mpSLAM(pSLAM),isIni(false),countFrame(0){}
 
-    void GrabImage(const sensor_msgs::ImageConstPtr& msg);
+    void GrabImage_0(const sensor_msgs::ImageConstPtr& msg);
 
-    void GrabImage_a(const sensor_msgs::ImageConstPtr& msg);
+    void GrabImage_1(const sensor_msgs::ImageConstPtr& msg);
 
-    void GrabImage_a_1(const sensor_msgs::ImageConstPtr& msg);
+    void GrabImage_2(const sensor_msgs::ImageConstPtr& msg);
 
-    void GrabImage_a_2(const sensor_msgs::ImageConstPtr& msg);
+    void GrabImage_3(const sensor_msgs::ImageConstPtr& msg);
 
     void insertKeyFrame(const ORB_SLAM2::frame &frame_msg);
 
@@ -93,12 +93,10 @@ int main(int argc, char **argv)
     ImageGrabber igb(&SLAM);
 
     ros::NodeHandle nodeHandler;
-    ros::Subscriber sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
-    // ros::Subscriber sub_a = nodeHandler.subscribe("/frameinfo", 1, &ImageGrabber::insertKeyFrame,&igb);
-    //assistant tracking thread
-    ros::Subscriber sub_a = nodeHandler.subscribe("/camera0/image_raw", 1, &ImageGrabber::GrabImage_a,&igb);
-    ros::Subscriber sub_a_1 = nodeHandler.subscribe("/camera1/image_raw", 1, &ImageGrabber::GrabImage_a_1,&igb);
-    ros::Subscriber sub_a_2 = nodeHandler.subscribe("/camera2/image_raw", 1, &ImageGrabber::GrabImage_a_2,&igb);
+    ros::Subscriber sub_0 = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage_0,&igb);
+    ros::Subscriber sub_1 = nodeHandler.subscribe("/camera0/image_raw", 1, &ImageGrabber::GrabImage_1,&igb);
+    ros::Subscriber sub_2 = nodeHandler.subscribe("/camera1/image_raw", 1, &ImageGrabber::GrabImage_2,&igb);
+    ros::Subscriber sub_3 = nodeHandler.subscribe("/camera2/image_raw", 1, &ImageGrabber::GrabImage_3,&igb);
     //publish the assistant tracking frames
     igb.pub_ = nodeHandler.advertise<ORB_SLAM2::floatMat>("framepose",10);
     igb.pub_a_ = nodeHandler.advertise<ORB_SLAM2::frame>("frameinfo",10);
@@ -119,7 +117,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
+void ImageGrabber::GrabImage_0(const sensor_msgs::ImageConstPtr& msg)
 {
     // Copy the ros image message to cv::Mat.
     cv_bridge::CvImageConstPtr cv_ptr;
@@ -155,7 +153,7 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 
 }
 
-void ImageGrabber::GrabImage_a(const sensor_msgs::ImageConstPtr& msg)
+void ImageGrabber::GrabImage_1(const sensor_msgs::ImageConstPtr& msg)
 {
     if(!isIni) return;
     if(countFrame < 50) return;
@@ -177,7 +175,7 @@ void ImageGrabber::GrabImage_a(const sensor_msgs::ImageConstPtr& msg)
 
 }
 
-void ImageGrabber::GrabImage_a_1(const sensor_msgs::ImageConstPtr& msg)
+void ImageGrabber::GrabImage_2(const sensor_msgs::ImageConstPtr& msg)
 {
     if(!isIni) return;
     if(countFrame < 100) return;
@@ -199,7 +197,7 @@ void ImageGrabber::GrabImage_a_1(const sensor_msgs::ImageConstPtr& msg)
 }
 
 
-void ImageGrabber::GrabImage_a_2(const sensor_msgs::ImageConstPtr& msg)
+void ImageGrabber::GrabImage_3(const sensor_msgs::ImageConstPtr& msg)
 {
     if(!isIni) return;
     if(countFrame < 150) return;

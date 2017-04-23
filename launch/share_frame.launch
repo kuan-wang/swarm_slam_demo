@@ -1,0 +1,6 @@
+
+<launch>
+  <node name="share_frame_node" pkg="swarm_slam_demo" type="share_frame_node" output="screen" args="/home/wangkuan/workspace/ORB_SLAM2/ORB_SLAM2/Vocabulary/ORBvoc.bin   /home/wangkuan/workspace/SwarmSlam/Examples/Monocular/TUM1.yaml false" >
+    <remap from="/camera1/image_raw" to="/firefly1/vi_sensor/right/image_raw" />
+  </node>
+</launch>

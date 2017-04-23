@@ -150,20 +150,17 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 
 void ImageGrabber::insertKeyFrame(const ORB_SLAM2::frame &frame_msg)
 {
-    // std::cout << "get the frame_msg" << '\n';
-    // // mpSLAM->mpTracker_a->SetAssistant(false);
-    // std::cout << "now the mCurrentFrame is" << '\n';
-    // mpSLAM->mpTracker_a->mCurrentFrame.Show();
-    // ORB_SLAM2::Frame* CurrentKeyFramePtr = new ORB_SLAM2::Frame(mpSLAM->mpTracker->mCurrentFrame);
-    // FrameinfoToFrame(frame_msg,CurrentKeyFramePtr);
-    // mpSLAM->mpTracker_a->mCurrentFrame = *CurrentKeyFramePtr;
-    // std::cout << "afrer FrameinfoToFrame now the mCurrentFrame is" << '\n';
-    // mpSLAM->mpTracker_a->mCurrentFrame.Show();
-    // std::cout << "start track sharing" << '\n';
-    // mpSLAM->mpTracker_a->TrackForNewFrameFromSharing();
-    // std::cout << "finished track sharing" << '\n';
-
-    // mpSLAM->mpTracker_a->SetAssistant(true);
+    std::cout << "get the frame_msg" << '\n';
+    std::cout << "now the mCurrentFrame is" << '\n';
+    mpSLAM->mpTracker_a->mCurrentFrame.Show();
+    ORB_SLAM2::Frame* CurrentKeyFramePtr = new ORB_SLAM2::Frame(mpSLAM->mpTracker->mCurrentFrame);
+    FrameinfoToFrame(frame_msg,CurrentKeyFramePtr);
+    mpSLAM->mpTracker_a->mCurrentFrame = *CurrentKeyFramePtr;
+    std::cout << "afrer FrameinfoToFrame now the mCurrentFrame is" << '\n';
+    mpSLAM->mpTracker_a->mCurrentFrame.Show();
+    std::cout << "start track sharing" << '\n';
+    mpSLAM->mpTracker_a->TrackForNewFrameFromSharing();
+    std::cout << "finished track sharing" << '\n';
 
 }
 

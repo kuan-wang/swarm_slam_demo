@@ -45,7 +45,7 @@ find_package(Pangolin REQUIRED)
 find_package(Boost  1.54.0  	     # Minimum or EXACT version e.g. 1.36.0
   REQUIRED             					# Fail with error if Boost is not found
   COMPONENTS serialization 				# Boost libraries by their canonical name
-)          
+)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -66,31 +66,31 @@ ${PROJECT_SOURCE_DIR}/../../../lib/libORB_SLAM2.so
 
 
 # Node for monocular camera
-rosbuild_add_executable(Monosave
-src/ros_mono_savemap.cc
+rosbuild_add_executable(save_map_node
+src/save_map_node.cc
 )
 
-target_link_libraries(Monosave
+target_link_libraries(save_map_node
 ${LIBS}
 )
 
 
 
 # Node for multi_monocular camera demo
-rosbuild_add_executable(multiMono_demo
-src/ros_multimono_demo.cc
+rosbuild_add_executable(share_frame_node
+src/share_frame_node.cc
 )
 
-target_link_libraries(multiMono_demo
+target_link_libraries(share_frame_node
 ${LIBS}
 )
 
 
 # Node for multicamera sharing info
-rosbuild_add_executable(multiMono_a
-src/ros_multimono_a.cc
+rosbuild_add_executable(swarm_slam_node
+src/swarm_slam_node.cc
 )
 
-target_link_libraries(multiMono_a
+target_link_libraries(swarm_slam_node
 ${LIBS}
 )
