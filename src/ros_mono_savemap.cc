@@ -111,7 +111,7 @@ int main(int argc, char **argv)
     {
 		bReuseMap = true;
 	}
-   	ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true, bReuseMap);
+   	ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true, bReuseMap, 1);
 
     //if (bReuseMap)
 		//SLAM.LoadMap("Slam_Map.bin");
