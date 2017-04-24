@@ -33,7 +33,7 @@ in Callback function, change the second parameter of function TrackMonocular() t
 ```
 igb.pub_a_ = nodeHandler.advertise<ORB_SLAM2::frame>("frameinfo1",10);  
 ```
-`ORB_SLAM2::frame` is the frame.msg I design for share the frame data, you can change it to `KeyPoint`,`Descripter`,etc. for your specified purpose, the types of those is declare in `ORB_SLAM2/msg`. You also can the `frameinfo1` to the topic name you want.   
+`ORB_SLAM2::frame` is the frame.msg I design for share the frame data, you can change it to `KeyPoint`,`Descripter`,etc. for your specified purpose, the types of those is declare in `ORB_SLAM2/msg`. You can also change the `frameinfo1` to the topic name you want.   
 ```
 void ImageGrabber::PublishFrameinfo(ORB_SLAM2::Frame* CurrentKeyFramePtr);  
 ```
